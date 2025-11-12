@@ -209,6 +209,14 @@ public class LinkedListTabulatedFunction implements TabulatedFunction {
             FunctionNode node2 = getNodeByIndex(i + 1);
 
             if (node1.getPoint().getX() <= x && node2.getPoint().getX() >= x) {
+
+                if (node1.getPoint().getX() == x) {
+                    return node1.getPoint().getY();
+                }
+                if (node2.getPoint().getX() == x) {
+                    return node2.getPoint().getY();
+                }
+
                 // Линейная интерполяция
                 double x1 = node1.getPoint().getX();
                 double y1 = node1.getPoint().getY();

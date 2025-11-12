@@ -124,8 +124,11 @@ public class Main {
             System.out.println("Х: " + test_fun3.getPointX(i) + " " + "Y: " + test_fun3.getPointY(i));
         }
 
-
-        TabulatedFunction test_fun4 = new LinkedListTabulatedFunction(4.0, 3.0, values2);
-
+        try {
+            TabulatedFunction test_fun4 = new LinkedListTabulatedFunction(4.0, 3.0, values2);
+        }
+        catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

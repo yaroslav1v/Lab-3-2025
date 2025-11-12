@@ -72,17 +72,26 @@ public class ArrayTabulatedFunction {
         double y;
         int findex=0, sindex=0;
 
-        if(compareDouble(x,getLeftDomainBorder())){return points_arr[0].getY();}
-        if(compareDouble(x,getRightDomainBorder())){return points_arr[pointslength-1].getY();}
-
         for(int i = 0; i < pointslength-1; i++){
-            if(points_arr[i].getX() <= x && points_arr[i + 1].getX() >= x){
-                findex = i;
-                sindex = i + 1;
-                i = pointslength-1;
-            }
-        }
-        return ((points_arr[findex].getY()) + (points_arr[sindex].getY() - points_arr[findex].getY()) * (x - points_arr[findex].getX()) / (points_arr[sindex].getX() - points_arr[findex].getX()));
+          if(points_arr[i].getX() <= x && points_arr[i + 1].getX() >= x) {
+
+              if (compareDouble(x, points_arr[i].getX())) {
+                  return points_arr[i].getY();
+              }
+              if (compareDouble(x, points_arr[i + 1].getX())) {
+                  return points_arr[i + 1].getY();
+              }
+
+              for (int j = 0; j < pointslength - 1; j++) {
+                  if (points_arr[j].getX() <= x && points_arr[j + 1].getX() >= x) {
+                      findex = j;
+                      sindex = j + 1;
+                      j = pointslength - 1;
+                  }
+              }
+          }
+      }
+      return ((points_arr[findex].getY()) + (points_arr[sindex].getY() - points_arr[findex].getY()) * (x - points_arr[findex].getX()) / (points_arr[sindex].getX() - points_arr[findex].getX()));
     }
 
     public int getPointsCount(){
