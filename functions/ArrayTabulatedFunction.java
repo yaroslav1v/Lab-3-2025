@@ -68,11 +68,10 @@ public class ArrayTabulatedFunction {
         return points_arr[pointslength-1].getX();
     }
 
-    public double getFunctionValue(double x){
+  public double getFunctionValue(double x){
         double y;
         int findex=0, sindex=0;
 
-        if(x < getLeftDomainBorder() || x > getRightDomainBorder()){return Double.NaN;}
         if(compareDouble(x,getLeftDomainBorder())){return points_arr[0].getY();}
         if(compareDouble(x,getRightDomainBorder())){return points_arr[pointslength-1].getY();}
 
@@ -235,4 +234,5 @@ public class ArrayTabulatedFunction {
         points_arr = temp_arr;
         pointslength++;
     }
+
 }
