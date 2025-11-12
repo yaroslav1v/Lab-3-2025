@@ -202,21 +202,19 @@ public class LinkedListTabulatedFunction implements TabulatedFunction {
         return head.getPrev().getPoint().getX();
     }
 
-    public double getFunctionValue(double x) {
-        if (x < getLeftDomainBorder() || x > getRightDomainBorder()) {
-            return Double.NaN;
-        }
-
+     public double getFunctionValue(double x) {
         // Поиск интервала, содержащего x
         for (int i = 0; i < size - 1; i++) {
             FunctionNode node1 = getNodeByIndex(i);
             FunctionNode node2 = getNodeByIndex(i + 1);
 
-            if (node1.getPoint().getX() <= x && node2.getPoint().getX() >= x) {
+            double x1 = node1.getPoint().getX();
+            double x2 = node2.getPoint().getX();
+
+
+            if (x >= x1 && x <= x2) {
                 // Линейная интерполяция
-                double x1 = node1.getPoint().getX();
                 double y1 = node1.getPoint().getY();
-                double x2 = node2.getPoint().getX();
                 double y2 = node2.getPoint().getY();
 
                 return y1 + (y2 - y1) * (x - x1) / (x2 - x1);
@@ -325,4 +323,5 @@ public class LinkedListTabulatedFunction implements TabulatedFunction {
         FunctionNode newNode = addNodeByIndex(insertIndex);
         newNode.setPoint(new FunctionPoint(point));
     }
+
 }
