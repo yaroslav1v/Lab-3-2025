@@ -101,8 +101,8 @@ public class Main {
           //  test_fun2.setPointY(999,999);
 
 
-        double[] values2 = {1.0, 3.0, 2.0, 4.0};
-        TabulatedFunction test_fun3 = new LinkedListTabulatedFunction(0.0, 3.0, values2);
+        double[] values2 = {1.0, 3.0, 2.0, 4.0, 5.0, 6.0};
+        TabulatedFunction test_fun3 = new LinkedListTabulatedFunction(1, 3.0, values2);
         try {
             TabulatedFunction funcError = new LinkedListTabulatedFunction(5.0, 0.0, 3);
         } catch (IllegalArgumentException e) {
@@ -120,6 +120,12 @@ public class Main {
         } catch (InappropriateFunctionPointException e) {
             System.out.println(e.getMessage());
         }
+        for (int i = 0; i < test_fun3.getPointsCount(); i++) {
+            System.out.println("Х: " + test_fun3.getPointX(i) + " " + "Y: " + test_fun3.getPointY(i));
+        }
+
+
+        TabulatedFunction test_fun4 = new LinkedListTabulatedFunction(4.0, 3.0, values2);
 
     }
 }
